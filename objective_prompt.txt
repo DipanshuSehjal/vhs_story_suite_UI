@@ -1,0 +1,5 @@
+ChatGPT prompt:
+
+Interactive Storytelling Platform:
+
+Build an app where users can collaborate in real-time to create interactive stories, where GPT assists in generating plot twists, character dialogues, and narrative elements. The app could allow users to vote on story directions or contribute to ongoing narratives.

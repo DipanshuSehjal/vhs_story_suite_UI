@@ -1,0 +1,5 @@
+1. Install node.js
+node --version
+
+# create react app
+2. npm install -g create-react-app
