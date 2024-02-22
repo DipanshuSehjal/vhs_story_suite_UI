@@ -1,0 +1,22 @@
+/* HomePage.css */
+
+.homePage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px; /* Adjust the gap between quadrants as needed */
+    height: 100vh; /* Make the container cover the entire viewport height */
+    width: 100vw; /* Make the container cover the entire viewport width */
+    padding: 10px; /* Add padding to the container */
+  }
+  
+  .quadrant {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc; /* Add border for visualization */
+  }
+  
+  .fullWidthInput {
+    width: 100%; /* Make the input cover the entire quadrant */
+  }
