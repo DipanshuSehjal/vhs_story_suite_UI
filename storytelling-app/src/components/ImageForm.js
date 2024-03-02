@@ -15,8 +15,8 @@ const ImageForm = ({ onImagesReceived }) => {
     samples: '',
     positivePrompt: '',
     negativePrompt: '',
-    multiple: '1', // Default value set to '1'
-    random: ''
+    count: '1', // Default value set to '1'
+    model: ''
   });
 
   const [images, setImages] = useState([]);
@@ -58,78 +58,80 @@ const ImageForm = ({ onImagesReceived }) => {
   };
 
   return (
-<form onSubmit={handleSubmit}>
-  <div className="form-group">
-    <label htmlFor="steps">Steps:</label>
-    <input type="text" id="steps" name="steps" value={formData.steps} onChange={handleChange} />
-  </div>
+    <div className="image-form">
+      <h2 className="text-center text-light fw-bold display-4 mb-4">Artwork Creation Tool</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="steps">Steps:</label>
+            <input type="text" id="steps" name="steps" value={formData.steps} onChange={handleChange} className="form-control" />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="width">Width:</label>
-    <input type="text" id="width" name="width" value={formData.width} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="width">Width:</label>
+            <input type="text" id="width" name="width" value={formData.width} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="height">Height:</label>
-    <input type="text" id="height" name="height" value={formData.height} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="height">Height:</label>
+            <input type="text" id="height" name="height" value={formData.height} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="seed">Seed:</label>
-    <input type="text" id="seed" name="seed" value={formData.seed} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="seed">Seed:</label>
+            <input type="text" id="seed" name="seed" value={formData.seed} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="cfg_scale">CFG Scale:</label>
-    <input type="text" id="cfg_scale" name="cfg_scale" value={formData.cfg_scale} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="cfg_scale">CFG Scale:</label>
+            <input type="text" id="cfg_scale" name="cfg_scale" value={formData.cfg_scale} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="samples">Samples:</label>
-    <input type="text" id="samples" name="samples" value={formData.samples} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="samples">Samples:</label>
+            <input type="text" id="samples" name="samples" value={formData.samples} onChange={handleChange} />
+          </div>
 
 
-  <div className="form-group">
-    <label htmlFor="positivePrompt">Positive Prompt:</label>
-    <input type="text" id="positivePrompt" name="positivePrompt" value={formData.positivePrompt} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="positivePrompt">Positive Prompt:</label>
+            <input type="text" id="positivePrompt" name="positivePrompt" value={formData.positivePrompt} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="negativePrompt">Negative Prompt:</label>
-    <input type="text" id="negativePrompt" name="negativePrompt" value={formData.negativePrompt} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="negativePrompt">Negative Prompt:</label>
+            <input type="text" id="negativePrompt" name="negativePrompt" value={formData.negativePrompt} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="random">Random:</label>
-    <input type="text" id="random" name="random" value={formData.random} onChange={handleChange} />
-  </div>
+          <div className="form-group">
+            <label htmlFor="model">Model:</label>
+            <input type="text" id="model" name="model" value={formData.model} onChange={handleChange} />
+          </div>
 
-  <div className="form-group">
-    <label htmlFor="multiple">Multiple:</label>
-    <select id="multiple" name="multiple" value={formData.multiple} onChange={handleChange}>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-  </div>
+          <div className="form-group">
+            <label htmlFor="count">Count:</label>
+            <select id="count" name="count" value={formData.count} onChange={handleChange}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
 
-  <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
 
-  {/* Render the images */}
-  {images.length > 0 && (
-    <div>
-      {images.map((imageUrl, index) => (
-        <img key={index} src={imageUrl} alt={`Image ${index}`} />
-      ))}
+          {/* Render the images */}
+          {images.length > 0 && (
+            <div>
+              {images.map((imageUrl, index) => (
+                <img key={index} src={imageUrl} alt={`Image ${index}`} />
+              ))}
+            </div>
+          )}
+
+        </form>
     </div>
-  )}
-
-</form>
-
   );
 };
 

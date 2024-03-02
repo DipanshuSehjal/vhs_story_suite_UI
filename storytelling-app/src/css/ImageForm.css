@@ -1,14 +1,37 @@
+/* ImageForm.css */
 .horizontal-form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .form-group {
-    margin-right: 20px; /* Adjust spacing between form groups */
-  }
-  
-  .form-group:last-child {
-    margin-right: 0; /* Remove margin for the last form group */
-  }
-  
+  display: flex;
+  flex-direction: column; /* Change flex direction to column */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Adjust spacing between form groups */
+}
+
+.form-group label {
+  color: white; /* Set label text color to white */
+  font-weight: bold; /* Apply bold font weight */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%; /* Set input and select width to 100% */
+  padding: 8px; /* Add padding for better appearance */
+  border: 1px solid #ccc; /* Add border for form fields */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  margin-top: 5px; /* Add margin for input and select fields */
+}
+
+.image-form h2 {
+  font-size: 24px; /* Set font size */
+  font-weight: bold; /* Apply bold font weight */
+  text-transform: uppercase; /* Convert text to uppercase */
+  letter-spacing: 2px; /* Add letter spacing for a trendy look */
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+  text-align: center; /* Center the text */
+}
