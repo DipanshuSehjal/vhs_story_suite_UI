@@ -1,0 +1,35 @@
+/* Home.css */
+body {
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 1.0, 0, 0.1)); /* Gradient background */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+  }
+
+.container {
+    display: flex;
+  }
+  
+  .left-section {
+    flex: 0 0 20%; /* Set the width of the left section to 20% */
+    padding: 20px;
+    border-right: 1px solid #ccc; /* Add a vertical border on the right side */
+    background-color: rgba(0, 0, 0, 0.2); /* Light black background color */
+  }
+  
+  .right-section {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .image-grid img {
+    width: 100%;
+    height: auto;
+  }
+  

@@ -28,7 +28,9 @@ const HomePage = () => {
       });
 
       Promise.all(imgPromises).then(imageData => {
-        setImages(imageData);
+        // Convert base64 image data to URLs
+        const imageUrls = imageData.map(base64 => `data:image/png;base64,${base64}`);
+        setImages(imageUrls);
       });
     } catch (error) {
       console.error('Failed to fetch images:', error.message);
