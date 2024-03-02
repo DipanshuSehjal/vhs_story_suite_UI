@@ -5,7 +5,7 @@ import '../css/ImageForm.css'; // Import CSS file for styling
 /**
  * Component representing a form to submit image generation parameters.
  */
-const ImageForm = () => {
+const ImageForm = ({ onImagesReceived }) => {
   const [formData, setFormData] = useState({
     steps: '',
     width: '',
@@ -26,7 +26,7 @@ const ImageForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e, handleImagesReceived) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:5000/api/text-to-image', {
@@ -51,7 +51,7 @@ const ImageForm = () => {
         promises.push(promise);
       });
       await Promise.all(promises);
-      handleImagesReceived(extractedImages); // Pass the extracted images to the callback function
+      onImagesReceived(extractedImages); // Pass the extracted images to the callback function
     } catch (error) {
       console.error('Error fetching images:', error);
     }
