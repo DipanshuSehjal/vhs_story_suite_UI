@@ -1,57 +1,46 @@
 // Home.js
-
-import React, { useState } from 'react';
-import ImageForm from './components/ImageForm';
-import ImageModal from './components/ImageModal'; // Import your existing ImageModal component
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './css/Home.css'; // Import CSS file for styling
 
+import TEXT2IMAGE from './images/text_to_image.jpeg'
+import IMAGE2IMAGE from './images/img2img.jpeg'
+
+
 const Home = () => {
-  const [images, setImages] = useState([]);
-  // NEW:
-  const [selectedImage, setSelectedImage] = useState(null);
-
-
-  // Function to handle received images
-  const handleImagesReceived = (extractedImages) => {
-    setImages(extractedImages);
-  };
-
-  // NEW: Function to handle image click and enlarge
-  const handleImageClick = (imageUrl) => {
-    setSelectedImage(imageUrl);
-  };
-
   return (
     <div className="home-container">
-      {/* Left section with ImageForm */}
-      <div className="left-section">
-        <ImageForm onImagesReceived={handleImagesReceived} />
+      {/* Tile 1 */}
+      <div className="tile-container">
+        <Link to="/sketchboard/text-to-image" className="tile-link">
+          <img src={TEXT2IMAGE} alt="Text To Image" className="tile-image" />
+          <div className="tile-overlay">Text To Image</div>
+        </Link>
       </div>
 
-      {/* Right section for displaying images */}
-      <div className="right-section">
-        {/* Display images in a grid layout */}
-        <div className="image-grid">
-
-          {images.map((imageUrl, index) => (
-            <div key={index} className="image-container">
-              <img
-                src={imageUrl}
-                alt={`Image ${index + 1}`}
-                onClick={() => handleImageClick(imageUrl)} // Handle image click
-              />
-            </div>
-
-          ))}
-        </div>
+      {/* Tile 2 */}
+      <div className="tile-container">
+        <Link to="/sketchboard/image-to-image" className="tile-link">
+          <img src={IMAGE2IMAGE} alt="Image To Image" className="tile-image" />
+          <div className="tile-overlay">Image To Image</div>
+        </Link>
       </div>
 
-      {/* Modal to display enlarged image */}
-      <ImageModal
-        isOpen={!!selectedImage} // Pass true if selectedImage is not null
-        imageUrl={selectedImage}
-        onRequestClose={() => setSelectedImage(null)} // Close modal when requested
-      />
+      {/* Tile 3 */}
+      <div className="tile-container">
+        <Link to="/sketchboard/text-to-image" className="tile-link">
+          <img src={TEXT2IMAGE} alt="Tile 3" className="tile-image" />
+          <div className="tile-overlay">Text To Image</div>
+        </Link>
+      </div>
+
+      {/* Tile 4 */}
+      <div className="tile-container">
+        <Link to="/sketchboard/text-to-image" className="tile-link">
+          <img src={TEXT2IMAGE} alt="Tile 4" className="tile-image" />
+          <div className="tile-overlay">Tile 4</div>
+        </Link>
+      </div>
     </div>
   );
 };

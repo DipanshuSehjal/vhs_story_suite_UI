@@ -1,38 +1,36 @@
 /* Home.css */
-body {
-  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 1.0, 0, 0.1)); /* Gradient background */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  height: 100vh; /* Set the height of the body to 100% of the viewport height */
-}
-
-
-/* Home.css */
 
 .home-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.left-section {
-  width: 20%;
-  background-color: #f0f0f0;
-  border-right: 1px solid #ddd;
+.tile-container {
+  margin: 0 10px; /* Add margin to space out the tiles */
 }
 
-.right-section {
-  width: 80%;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
+.tile-link {
+  display: block;
+  position: relative;
+  text-align: center;
 }
 
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-}
-
-.image-grid img {
+.tile-image {
   width: 100%;
   height: auto;
+  border-radius: 10px;
+}
+
+.tile-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }

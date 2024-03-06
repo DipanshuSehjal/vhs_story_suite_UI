@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import JSZip from 'jszip'; // Import JSZip library
-import '../css/ImageForm.css'; // Import CSS file for styling
+import '../../css/TextToImageForm.css'; // Import CSS file for styling
+import { handleSubmit } from '../../utils/fetchTextToImage';
+
 
 /**
  * Component representing a form to submit image generation parameters.
+ * Sends JSON request
  */
-const ImageForm = ({ onImagesReceived }) => {
+const TextToImageForm = ({ onImagesReceived }) => {
+    const endpoint = 'text-to-image';
+
     const [formData, setFormData] = useState({
       steps: '',
       width: '',
@@ -24,42 +29,19 @@ const ImageForm = ({ onImagesReceived }) => {
       setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleFormSubmit = async (e) => {
       e.preventDefault();
-      try {
-        const response = await fetch('http://localhost:5000/api/text-to-image', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch images');
-        }
-        const blob = await response.blob();
-        const zip = await JSZip.loadAsync(blob); // Load the received zip file
-        const extractedImages = [];
-        const promises = [];
-        zip.forEach((relativePath, zipEntry) => {
-          const promise = zip.files[zipEntry.name].async('blob').then((fileData) => {
-            const imageUrl = URL.createObjectURL(fileData);
-            extractedImages.push(imageUrl);
-          });
-          promises.push(promise);
-        });
-        await Promise.all(promises);
-        console.log("Here  in handle sumbit")
-        onImagesReceived(extractedImages); // Pass the extracted images to the callback function
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
+      await handleSubmit(endpoint, formData, onImagesReceived);
     };
 
     return (
       <div className="form-container">
+
           <h2 className="form-title">Artwork Creation Tool</h2>
-          <form onSubmit={handleSubmit} className="image-form">
+          <h3 className="form-title">Text to Image </h3>
+
+          <form onSubmit={handleFormSubmit} className="image-form">
+
               <div className="form-group">
                 <label htmlFor="steps" className="form-label">Steps:</label>
                 <input type="text" id="steps" name="steps" value={formData.steps} onChange={handleChange} />
@@ -119,10 +101,11 @@ const ImageForm = ({ onImagesReceived }) => {
                 <span>{formData.count}</span>
               </div>
 
-              <button type="submit">Submit</button>
+              <button type="submit">Imagine</button>
+              
           </form>
       </div>
     );
 };
 
-export default ImageForm;
+export default TextToImageForm;
